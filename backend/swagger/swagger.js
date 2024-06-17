@@ -30,6 +30,15 @@ const doc = {
           meetingLink: {
             type: "string",
           },
+          position: {
+            type: "string",
+          },
+          institution: {
+            type: "string",
+          },
+          description: {
+            type: "string",
+          },
         },
         required: ["contactLink", "meetingLink"],
       },
@@ -40,6 +49,15 @@ const doc = {
             type: "string",
           },
           meetingLink: {
+            type: "string",
+          },
+          position: {
+            type: "string",
+          },
+          institution: {
+            type: "string",
+          },
+          description: {
             type: "string",
           },
         },

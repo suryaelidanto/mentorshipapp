@@ -84,8 +84,16 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -112,8 +120,16 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     }
   },
@@ -133,6 +149,15 @@
           },
           "meetingLink": {
             "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "institution": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
           }
         },
         "required": [
@@ -147,6 +172,15 @@
             "type": "string"
           },
           "meetingLink": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "institution": {
+            "type": "string"
+          },
+          "description": {
             "type": "string"
           }
         },

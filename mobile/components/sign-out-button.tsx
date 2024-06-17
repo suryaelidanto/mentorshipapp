@@ -1,6 +1,6 @@
 import { useAuth } from "@clerk/clerk-expo";
-import React from "react";
-import { Button, View } from "react-native";
+import { Button } from "@rneui/themed";
+import { View } from "react-native";
 
 export function SignOutButton() {
     const { isLoaded, signOut } = useAuth();

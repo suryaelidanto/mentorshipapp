@@ -21,13 +21,13 @@
       }
     },
     "extra": {
-      "clerkPublishableKey": "pk_test_d2FybS1iYWRnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA"
+      "clerkPublishableKey": "pk_test_d2FybS1iYWRnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA",
+      "backendUrl": "https://e092-104-28-245-127.ngrok-free.app/"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-secure-store"
-    ]
+    "plugins": ["expo-secure-store"],
+    "scheme": "com.mentorshipapp.suryaelidanto.com"
   }
 }
