@@ -13,7 +13,7 @@
 - [x] Home screen + integrate to backend getting mentorship list using flatlist
 - [x] Integrate with backend (development)
 - [x] Change fonts
-- [ ] Profile page
+- [x] Profile page
 - [ ] Integrate with backend (production)
 - [ ] Build into APK
 - [ ] Test APK
