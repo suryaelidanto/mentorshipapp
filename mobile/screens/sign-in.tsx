@@ -1,53 +1,35 @@
 import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { useSignIn } from "@clerk/clerk-expo";
+import * as WebBrowser from "expo-web-browser";
+import { Button } from "@rneui/themed";
+import { useOAuth } from "@clerk/clerk-expo";
+import { useWarmUpBrowser } from "../hooks/use-warm-up-browser";
+
+WebBrowser.maybeCompleteAuthSession();
 
 export default function SignInScreen() {
-    const { signIn, setActive, isLoaded } = useSignIn();
+    useWarmUpBrowser();
 
-    const [emailAddress, setEmailAddress] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
 
-    const onSignInPress = async () => {
-        if (!isLoaded) {
-            return;
-        }
-
+    const onPress = React.useCallback(async () => {
         try {
-            const completeSignIn = await signIn.create({
-                identifier: emailAddress,
-                password,
-            });
-            // This is an important step,
-            // This indicates the user is signed in
-            await setActive({ session: completeSignIn.createdSessionId });
-        } catch (err: any) {
-            console.log(err);
+            const { createdSessionId, signIn, signUp, setActive } =
+                await startOAuthFlow();
+
+            if (createdSessionId) {
+                setActive?.({ session: createdSessionId });
+            } else {
+                // Use signIn or signUp for next steps such as MFA
+            }
+        } catch (err) {
+            console.error("OAuth error", err);
         }
-    };
+    }, []);
+
     return (
-        <View>
-            <View>
-                <TextInput
-                    autoCapitalize="none"
-                    value={emailAddress}
-                    placeholder="Email..."
-                    onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-                />
-            </View>
-
-            <View>
-                <TextInput
-                    value={password}
-                    placeholder="Password..."
-                    secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
-                />
-            </View>
-
-            <TouchableOpacity onPress={onSignInPress}>
-                <Text>Sign in</Text>
-            </TouchableOpacity>
-        </View>
+        <Button
+            title="Sign in with Google"
+            onPress={onPress}
+        />
     );
 }

@@ -3,8 +3,7 @@
 - [x] Setup Expo
 - [x] Setup Clerk
 - [x] Build login and register with Clerk
-- [ ] Beautify login form
-- [ ] Beautify register form
+- [x] Beautify login form (just google button actually xD)
 - [ ] Implement React Navigation
 - [ ] Setup Expo React Native Elements
 - [ ] Setup home screens
