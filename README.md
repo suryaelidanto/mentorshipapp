@@ -1,5 +1,3 @@
-## To-Do List for GitHub README
-
 ### Frontend
 
 - [x] Setup Expo
@@ -20,4 +18,4 @@
 
 - [x] Setup backend with Express
 - [x] Setup CRUD mentorship session (relation with Clerk credential)
-- [] Deploy into Railway
+- [ ] Deploy into Railway
