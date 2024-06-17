@@ -12,6 +12,8 @@
 - [x] Implement tanstack query
 - [x] Home screen + integrate to backend getting mentorship list using flatlist
 - [x] Integrate with backend (development)
+- [x] Change fonts
+- [ ] Profile page
 - [ ] Integrate with backend (production)
 - [ ] Build into APK
 - [ ] Test APK

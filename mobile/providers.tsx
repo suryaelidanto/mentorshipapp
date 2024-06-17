@@ -4,8 +4,9 @@ import { ThemeProvider } from '@rneui/themed';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { ActivityIndicator, Platform, StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { loadFonts } from "./libs/fonts";
 import { RNETheme } from "./libs/theme";
 
 export interface ProvidersProps {
@@ -13,6 +14,12 @@ export interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
+    const fontsLoaded = loadFonts()
+
+    if (!fontsLoaded) {
+        return <ActivityIndicator />;
+    }
+
     const tokenCache = {
         getToken(key: string) {
             try {

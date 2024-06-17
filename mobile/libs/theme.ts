@@ -8,12 +8,15 @@ export const RNETheme = createTheme({
       ios: lightColors.platform.ios,
     }),
     primary: "#00ADB5",
+    secondary: "#393E46",
+    grey0: "#EEEEEE",
     black: "#222831",
     background: "#FFFFFF",
   },
   components: {
     Text: {
       style: {
+        fontFamily: "RobotoMono_500Medium",
         color: "#222831",
       },
     },
@@ -24,10 +27,3 @@ export const RNETheme = createTheme({
     },
   },
 });
-
-// colors: {
-//     text: "#222831",
-//     card: "#393E46",
-//     primary: "#00ADB5",
-//     background: "#FFFFFF",
-//   },
