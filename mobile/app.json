@@ -22,7 +22,7 @@
     },
     "extra": {
       "clerkPublishableKey": "pk_test_d2FybS1iYWRnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA",
-      "backendUrl": "https://e092-104-28-245-127.ngrok-free.app/"
+      "backendUrl": "https://9f26-104-28-245-127.ngrok-free.app/"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -2,6 +2,7 @@ import "module-alias/register";
 
 import express from "express";
 import mentorshipRoutes from "@/routes/mentorship";
+import userInfoRoutes from "@/routes/user-info";
 
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "@/../swagger/swagger-output.json";
@@ -24,6 +25,7 @@ app.use(
 
 app.use(express.json());
 app.use("/mentorships", mentorshipRoutes);
+app.use("/user-infos", userInfoRoutes);
 
 const PORT = process.env.PORT || 5000;
 

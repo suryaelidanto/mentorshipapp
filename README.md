@@ -14,6 +14,9 @@
 - [x] Integrate with backend (development)
 - [x] Change fonts
 - [x] Profile page
+- [x] Add become a mentor page
+- [x] Fix clerk authentication with expo => temporary with manual authorization
+- [x] Fix tanstack query refetch on focus, etc
 - [ ] Integrate with backend (production)
 - [ ] Build into APK
 - [ ] Test APK

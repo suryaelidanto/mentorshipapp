@@ -1,5 +1,5 @@
 import { Providers } from './providers';
-import Route from './route';
+import Route from './routes';
 
 export default function App() {
   return (

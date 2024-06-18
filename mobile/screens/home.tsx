@@ -3,9 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ActivityIndicator, Image, ScrollView, View } from 'react-native';
 import api from '../libs/api';
 
-import { useAuth } from '@clerk/clerk-react';
 import { Card } from '@rneui/themed';
-import { useEffect } from 'react';
 import { MentorshipEntity } from '../types/entities/mentorship';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -19,7 +17,6 @@ import { truncateString } from '../utils/functions';
 
 export default function HomeScreen() {
   const { theme } = useTheme();
-  const { getToken } = useAuth();
 
   const { data, isFetching } = useQuery<MentorshipEntity[]>({
     queryKey: ['mentorships'],
@@ -29,22 +26,33 @@ export default function HomeScreen() {
     },
   });
 
-  async function checkToken() {
-    console.log(await getToken());
-  }
-
-  useEffect(() => {
-    checkToken();
-  }, []);
-
   if (isFetching) {
     return <ActivityIndicator />;
   }
 
   return (
-    <View style={{ backgroundColor: theme.colors.background, flex: 1 }}>
-      <ScrollView>
-        {data?.map(item => (
+    <ScrollView
+      contentContainerStyle={{
+        flexGrow: 1,
+        backgroundColor: theme.colors.background,
+      }}
+    >
+      {Array.isArray(data) && data.length <= 0 ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 20,
+          }}
+        >
+          <Text style={{ textAlign: 'center', color: theme.colors.primary }}>
+            There's nothing here yet, hey, it's still new. Let's be the first
+            mentor on our platform! 👻
+          </Text>
+        </View>
+      ) : (
+        data?.map(item => (
           <Card key={item.id} wrapperStyle={{ gap: 10 }}>
             <Image
               source={{ uri: item.userInfo.imageUrl ?? '' }}
@@ -117,8 +125,8 @@ export default function HomeScreen() {
               <Text style={{ color: theme.colors.background }}>Message</Text>
             </Button>
           </Card>
-        ))}
-      </ScrollView>
-    </View>
+        ))
+      )}
+    </ScrollView>
   );
 }

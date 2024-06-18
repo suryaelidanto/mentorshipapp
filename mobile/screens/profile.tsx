@@ -1,10 +1,27 @@
-import { useUser } from '@clerk/clerk-react';
+import { useAuth, useUser } from '@clerk/clerk-react';
+import { NavigationProp } from '@react-navigation/native';
 import { Button, Image, Text, useTheme } from '@rneui/themed';
-import { ScrollView, View } from 'react-native';
+import { useContext } from 'react';
+import { ScrollView, View, ViewProps } from 'react-native';
+import { UserContext } from '../context/user';
 
-export default function ProfileScreen() {
+export interface ProfileScreenProps extends ViewProps {
+  navigation?: any;
+}
+
+export default function ProfileScreen({ navigation }: ProfileScreenProps) {
   const { theme } = useTheme();
   const { user } = useUser();
+  const { signOut } = useAuth();
+  const { isMentor } = useContext(UserContext);
+
+  const onSignOut = async () => {
+    signOut();
+  };
+
+  const onBecomeMentor = async () => {
+    navigation.navigate('Become Mentor');
+  };
 
   return (
     <View
@@ -20,10 +37,13 @@ export default function ProfileScreen() {
           style={{ borderRadius: 5, aspectRatio: 1, objectFit: 'cover' }}
         />
         <View style={{ marginTop: 50, gap: 20 }}>
-          <Button>
+          <Button onPress={onBecomeMentor} disabled={isMentor}>
             <Text style={{ color: theme.colors.background }}>
-              Become a mentor
+              {!isMentor ? 'Become a Mentor' : 'You are a mentor now 🥳'}
             </Text>
+          </Button>
+          <Button onPress={onSignOut} color={'error'}>
+            <Text style={{ color: theme.colors.background }}>Sign Out</Text>
           </Button>
           <View>
             <Text style={{ color: theme.colors.primary, fontSize: 15 }}>

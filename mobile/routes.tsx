@@ -4,6 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from '@rneui/themed';
+import { useContext } from 'react';
+import { UserContext } from './context/user';
+import BecomeMentorScreen from './screens/become-mentor';
 import HomeScreen from './screens/home';
 import ProfileScreen from './screens/profile';
 import SignInScreen from './screens/sign-in';
@@ -24,6 +27,7 @@ const MainStack = () => (
 export default function Route() {
   const { isSignedIn } = useAuth();
   const { theme } = useTheme();
+  const { isMentor } = useContext(UserContext);
 
   return (
     <NavigationContainer>
@@ -43,8 +47,14 @@ export default function Route() {
 
               if (route.name === 'Explore Mentors') {
                 iconName = focused ? 'people-circle' : 'people-circle-outline';
-              } else if (route.name === 'My Profile') {
+              }
+
+              if (route.name === 'My Profile') {
                 iconName = focused ? 'person-circle' : 'person-circle-outline';
+              }
+
+              if (route.name === 'Become Mentor') {
+                iconName = focused ? 'star' : 'star-outline';
               }
 
               return (
@@ -62,12 +72,19 @@ export default function Route() {
           <Tab.Screen
             name="Explore Mentors"
             component={MainStack}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, unmountOnBlur: true }}
           />
+          {!isMentor && (
+            <Tab.Screen
+              name="Become Mentor"
+              component={BecomeMentorScreen}
+              options={{ headerShown: false, unmountOnBlur: true }}
+            />
+          )}
           <Tab.Screen
             name="My Profile"
             component={ProfileScreen}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, unmountOnBlur: true }}
           />
         </Tab.Navigator>
       )}

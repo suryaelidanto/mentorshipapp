@@ -11,6 +11,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { UserProvider } from './context/user';
 import { loadFonts } from './libs/fonts';
 import { RNETheme } from './libs/theme';
 
@@ -51,7 +52,9 @@ export function Providers({ children }: ProvidersProps) {
         publishableKey={Constants.expoConfig?.extra?.clerkPublishableKey}
       >
         <SafeAreaProvider style={styles.safeArea}>
-          <ThemeProvider theme={RNETheme}>{children}</ThemeProvider>
+          <ThemeProvider theme={RNETheme}>
+            <UserProvider>{children}</UserProvider>
+          </ThemeProvider>
           <StatusBar translucent />
         </SafeAreaProvider>
       </ClerkProvider>
