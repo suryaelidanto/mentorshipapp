@@ -18,16 +18,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.suryaelidanto.mentorshipapp"
     },
     "extra": {
       "clerkPublishableKey": "pk_test_d2FybS1iYWRnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA",
-      "backendUrl": "https://9f26-104-28-245-127.ngrok-free.app/"
+      "backendUrl": "https://mentorshipapp-staging.up.railway.app",
+      "eas": {
+        "projectId": "f4162f7c-621a-4493-b445-841e062f876b"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-secure-store"],
-    "scheme": "com.mentorshipapp.suryaelidanto.com"
+    "plugins": [
+      "expo-secure-store"
+    ],
+    "scheme": "com.mentorshipapp.suryaelidanto.com",
+    "owner": "suryaelidanto"
   }
 }
