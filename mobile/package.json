@@ -36,6 +36,7 @@
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
     "@types/yup": "^0.32.0",
+    "eas-cli": "^10.0.2",
     "prettier": "^3.3.2",
     "typescript": "~5.3.3"
   },
