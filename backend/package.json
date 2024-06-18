@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "node ./dist/src/index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "tsc && prisma generate && npm run swagger",
+    "start": "node -r module-alias/register ./dist/src/index.js",
     "swagger": "node ./swagger/swagger.js"
   },
   "keywords": [],
@@ -32,6 +32,6 @@
     "swagger-autogen": "^2.23.7"
   },
   "_moduleAliases": {
-    "@": "src"
+    "@": "./dist/src"
   }
 }

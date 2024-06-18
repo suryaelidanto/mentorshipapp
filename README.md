@@ -27,4 +27,5 @@
 - [x] Setup backend with Express
 - [x] Setup CRUD mentorship session (relation with Clerk credential)
 - [x] Make relation user to clerk
+- [x] Prepare for deployment
 - [ ] Deploy into Railway

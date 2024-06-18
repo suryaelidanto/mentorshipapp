@@ -5,7 +5,7 @@ import mentorshipRoutes from "@/routes/mentorship";
 import userInfoRoutes from "@/routes/user-info";
 
 import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "@/../swagger/swagger-output.json";
+import swaggerDocument from "../swagger/swagger-output.json";
 import "dotenv/config";
 
 const app = express();
