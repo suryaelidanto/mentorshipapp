@@ -14,7 +14,7 @@ export default function SignInScreen() {
 
   const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' });
 
-  const onPress = useCallback(async () => {
+  const onPress = async () => {
     try {
       const { createdSessionId, signIn, signUp, setActive } =
         await startOAuthFlow();
@@ -27,7 +27,7 @@ export default function SignInScreen() {
     } catch (err) {
       console.error('OAuth error', JSON.stringify(err));
     }
-  }, []);
+  };
 
   return (
     <View style={{ padding: 10, flex: 1, justifyContent: 'center' }}>

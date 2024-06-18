@@ -12,14 +12,18 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.suryaelidanto.mentorshipapp"
+      "package": "com.suryaelidanto.mentorshipapp",
+      "runtimeVersion": "1.0.0"
     },
     "extra": {
       "clerkPublishableKey": "pk_test_d2FybS1iYWRnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA",
@@ -35,6 +39,9 @@
       "expo-secure-store"
     ],
     "scheme": "com.mentorshipapp.suryaelidanto.com",
-    "owner": "suryaelidanto"
+    "owner": "suryaelidanto",
+    "updates": {
+      "url": "https://u.expo.dev/f4162f7c-621a-4493-b445-841e062f876b"
+    }
   }
 }

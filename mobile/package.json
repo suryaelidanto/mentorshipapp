@@ -2,16 +2,19 @@
   "name": "mentorshipapp",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+  "expo-application": "*",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "prebuild": "expo prebuild --platform android --clean"
   },
   "dependencies": {
     "@clerk/clerk-expo": "1.1.0",
     "@expo-google-fonts/dev": "^0.2.3",
     "@expo/vector-icons": "^14.0.2",
+    "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "11.3.1",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
@@ -22,24 +25,35 @@
     "axios": "^1.7.2",
     "expo": "~51.0.14",
     "expo-constants": "~16.0.2",
+    "expo-crypto": "~13.0.2",
     "expo-font": "~12.0.7",
     "expo-secure-store": "~13.0.1",
     "expo-status-bar": "~1.12.1",
+    "expo-updates": "~0.25.17",
+    "expo-web-browser": "~13.0.3",
     "formik": "^2.4.6",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.74.2",
+    "react-native-gesture-handler": "~2.16.1",
+    "react-native-reanimated": "~3.10.1",
     "react-native-safe-area-context": "4.10.1",
+    "react-native-screens": "3.31.1",
     "react-native-vector-icons": "^10.1.0",
-    "yup": "^1.4.0",
-    "react-dom": "18.2.0"
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
     "@types/yup": "^0.32.0",
     "eas-cli": "^10.0.2",
+    "expo-dev-client": "^4.0.18",
     "prettier": "^3.3.2",
     "typescript": "~5.3.3"
+  },
+  "overrides": {
+    "@expo/config-plugins": "~8.0.0",
+    "@expo/prebuild-config": "~7.0.0"
   },
   "private": true
 }

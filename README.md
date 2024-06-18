@@ -17,9 +17,12 @@
 - [x] Add become a mentor page
 - [x] Fix clerk authentication with expo => temporary with manual authorization
 - [x] Fix tanstack query refetch on focus, etc
-- [ ] Integrate with backend (production)
-- [ ] Build into APK
-- [ ] Test APK
+- [x] Integrate with backend (staging)
+- [x] Build into APK
+- [x] Test APK
+- [ ] Update mentorship data
+- [ ] Delete (or better, just activate / deactivate mentorship: "once become mentor, you never coming back")
+- [ ] Activate deactivate list
 - [ ] Publish on Play Store
 
 ### Backend
@@ -27,5 +30,7 @@
 - [x] Setup backend with Express
 - [x] Setup CRUD mentorship session (relation with Clerk credential)
 - [x] Make relation user to clerk
-- [x] Prepare for deployment
-- [ ] Deploy into Railway
+- [x] Prepare for deployment (staging and production)
+- [x] Deploy into Railway
+- [x] Prepare environment (staging and production)
+- [ ] Activate / deactivate schema update and BE
