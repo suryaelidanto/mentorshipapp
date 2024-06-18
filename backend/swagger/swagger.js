@@ -1,7 +1,27 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const swaggerAutogen = require("swagger-autogen")({
   openapi: "3.0.0",
   autoHeaders: false,
 });
+
+let environment;
+if (process.env.NODE_ENV === "production") {
+  environment = "production";
+} else if (process.env.NODE_ENV === "staging") {
+  environment = "staging";
+} else {
+  environment = "development";
+}
+
+console.log(environment);
+
+const serverUrls = {
+  development: "http://localhost:5000",
+  staging: "https://mentorshipapp-staging.up.railway.app",
+  production: "https://mentorshipapp-production.up.railway.app",
+};
 
 const doc = {
   info: {
@@ -10,7 +30,7 @@ const doc = {
   },
   servers: [
     {
-      url: "http://localhost:5000",
+      url: serverUrls[environment],
     },
   ],
   components: {
