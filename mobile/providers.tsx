@@ -1,5 +1,6 @@
-import { ClerkProvider } from '@clerk/clerk-expo';
+import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import { TokenCache } from '@clerk/clerk-expo/dist/cache';
+import { LezzServerProviderWithClerk, LezzServerReactClient } from '@lezzserver/react';
 import { ThemeProvider } from '@rneui/themed';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Constants from 'expo-constants';
@@ -44,16 +45,23 @@ export function Providers({ children }: ProvidersProps) {
   };
 
   const queryClient = new QueryClient();
+  const LSClient = new LezzServerReactClient(Constants.expoConfig?.extra?.EXPO_PUBLIC_LEZZSERVER_DEPLOYMENT_URL);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ClerkProvider
         tokenCache={tokenCache as TokenCache}
-        publishableKey={Constants.expoConfig?.extra?.clerkPublishableKey}
+        publishableKey={
+          Constants.expoConfig?.extra?.clerkPublishableKey
+        }
       >
         <SafeAreaProvider style={styles.safeArea}>
           <ThemeProvider theme={RNETheme}>
-            <UserProvider>{children}</UserProvider>
+            <UserProvider>
+              <LezzServerProviderWithClerk client={LSClient} useAuth={useAuth}>
+                {children}
+              </LezzServerProviderWithClerk>
+            </UserProvider>
           </ThemeProvider>
           <StatusBar translucent />
         </SafeAreaProvider>

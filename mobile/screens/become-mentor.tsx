@@ -9,13 +9,14 @@ import {
 import { Button, Input, Text, useTheme } from '@rneui/themed';
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@lezzserver/react';
 import api from '../libs/api';
 import { MentorshipEntity } from '../types/entities/mentorship';
 import { AxiosError } from 'axios';
 import { CreateMentorshipDTO } from '../features/become-mentor/types/mentorship';
 import { useAuth } from '@clerk/clerk-react';
 import { UserContext } from '../context/user';
+import { api as LSApi } from '../lezzserver/_generated/api';
 
 const validationSchema = yup.object().shape({
   position: yup.string().required('Position is required').max(100),
@@ -40,21 +41,29 @@ export default function BecomeMentorScreen() {
   const { getToken } = useAuth();
   const { refetchIsMentor } = useContext(UserContext);
 
-  const { mutateAsync, isPending } = useMutation<
-    MentorshipEntity,
-    AxiosError,
-    CreateMentorshipDTO
-  >({
-    mutationFn: async data => {
-      const token = await getToken();
-      const response = await api.post('/mentorships', data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return response.data;
-    },
-  });
+  // const { mutateAsync, isPending } = useMutation<
+  //   MentorshipEntity,
+  //   AxiosError,
+  //   CreateMentorshipDTO
+  // >({
+  //   mutationFn: async data => {
+  //     const token = await getToken();
+  //     const response = await api.post('/mentorships', data, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     return response.data;
+  //   },
+  // });
+
+  const { isLoading, mutateAsync } = useMutation(
+    LSApi.mentorship.createMentorship
+  );
+
+  const { data } = useQuery(LSApi.mentorship.listMentorship);
+
+  console.log(data);
 
   const handleSubmitForm = (values: any) => {
     Alert.alert(
@@ -69,7 +78,8 @@ export default function BecomeMentorScreen() {
           text: 'OK',
           onPress: async () => {
             try {
-              await mutateAsync(values);
+              const test = await mutateAsync(values);
+              console.log(test);
               refetchIsMentor();
             } catch (err: any) {
               Alert.alert(`Error : ${err.message}`);
@@ -170,9 +180,9 @@ export default function BecomeMentorScreen() {
                   : ''
               }
             />
-            <Button onPress={() => handleSubmit()} disabled={isPending}>
+            <Button onPress={() => handleSubmit()} disabled={isLoading}>
               <Text style={{ color: theme.colors.background }}>
-                {isPending ? (
+                {isLoading ? (
                   <ActivityIndicator color={theme.colors.background} />
                 ) : (
                   'Submit'

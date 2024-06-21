@@ -27,10 +27,11 @@
     },
     "extra": {
       "clerkPublishableKey": "pk_test_d2FybS1iYWRnZXItNDQuY2xlcmsuYWNjb3VudHMuZGV2JA",
-      "backendUrl": "https://mentorshipapp-staging.up.railway.app",
+      "backendUrl": "https://a805-2404-8000-1003-dfe0-b59e-f548-d0eb-23db.ngrok-free.app",
       "eas": {
         "projectId": "f4162f7c-621a-4493-b445-841e062f876b"
-      }
+      },
+      "EXPO_PUBLIC_LEZZSERVER_DEPLOYMENT_URL": "https://4a07-2404-8000-1003-dfe0-b59e-f548-d0eb-23db.ngrok-free.app/access/2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
