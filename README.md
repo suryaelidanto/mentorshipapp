@@ -1,6 +1,7 @@
 ## Development Plan
 
 ### Day 1: App Planning and Analysis
+https://github.com/suryaelidanto/mentorshipapp/assets/50188897/8fa5f217-4e78-4556-8e7e-8255f4c9a745
 
 **Business and Profit Analysis for the App**
 - **Revenue Model**
